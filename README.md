@@ -82,28 +82,28 @@ Comandos
 
 Verificar tudo sem abrir o chat:
 
-cd /home/clone/projeto_QMD
-./start.sh --check
+`cd /home/clone/projeto_QMD`
+`./start.sh --check`
 
 Atualizar a coleção:
 
-./ingest.sh
+`./ingest.sh`
 
 Consultar QMD diretamente:
 
-./query.sh "AI business demand"
+`./query.sh "AI business demand"`
 
 Ver o estado:
 
-./status.sh
+`./status.sh`
 
 Abrir o chat Sand:
 
-./chat.sh
+`./chat.sh`
 
 ou:
 
-hermes -p sand chat
+`hermes -p sand chat`
 
 MCP
 
@@ -129,11 +129,11 @@ A instalação precisa ser feita em uma VPS com acesso à internet, Node.js 22 o
 2. Copie esta pasta projeto_QMD e a pasta transcricoes_md para a VPS, preservando os arquivos Markdown.
 3. Entre na pasta do projeto:
 
-cd /home/clone/projeto_QMD
+`cd /home/clone/projeto_QMD`
 
 4. Execute o instalador local:
 
-./setup_vps.sh
+`./setup_vps.sh`
 
 O setup_vps.sh instala QMD se necessário, cria ou reutiliza o perfil Hermes sand, copia o SOUL.md para o perfil, cria a coleção QMD, registra o contexto, localiza um Python do Hermes com MCP, configura o servidor sand-qmd e atualiza o índice.
 
@@ -141,22 +141,22 @@ O script não configura credenciais de modelo, WhatsApp ou outros segredos autom
 
 5. Verifique a instalação:
 
-./start.sh --check
+`./start.sh --check`
 
 6. Faça uma consulta direta de diagnóstico:
 
-./query.sh "AI business demand"
+`./query.sh "AI business demand"`
 
 Chamando pelo Hermes
 
 Depois da instalação, abra uma conversa interativa:
 
-cd /home/clone/projeto_QMD
-./chat.sh
+`cd /home/clone/projeto_QMD`
+`./chat.sh`
 
 ou:
 
-hermes -p sand chat
+`hermes -p sand chat`
 
 O perfil sand usa o MCP sand-qmd. O usuário pode perguntar em linguagem natural, por exemplo:
 
@@ -168,17 +168,17 @@ Executando pelo gateway
 
 Configure a plataforma no perfil sand:
 
-hermes -p sand gateway setup
+`hermes -p sand gateway setup`
 
 Escolha e configure WhatsApp quando o assistente oferecer essa plataforma. Depois, teste o gateway em primeiro plano:
 
-hermes -p sand gateway
+`hermes -p sand gateway`
 
 Quando a configuração estiver correta, inicie-o como serviço:
 
-hermes -p sand gateway install
-hermes -p sand gateway start
-hermes -p sand gateway status
+`hermes -p sand gateway install`
+`hermes -p sand gateway start`
+`hermes -p sand gateway status`
 
 Os comandos exatos de pareamento, token ou sessão dependem do adaptador de WhatsApp escolhido pelo Hermes. Não copie tokens de outra instalação; configure as credenciais da nova VPS no perfil sand.
 
@@ -194,16 +194,16 @@ Operação e atualização
 
 Depois de adicionar ou alterar transcrições:
 
-cd /home/clone/projeto_QMD
-./ingest.sh
+`cd /home/clone/projeto_QMD`
+`./ingest.sh`
 
 Para verificar o gateway:
 
-hermes -p sand gateway status
+`hermes -p sand gateway status`
 
 Para verificar o índice e MCP:
 
-./status.sh
+`./status.sh`
 
 Arquivos que não devem ser compartilhados
 
