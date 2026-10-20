@@ -175,11 +175,15 @@ No CLI, a palavra Sand é opcional; no gateway ela servirá como nome/chamamento
 
 Configure a plataforma no perfil sand:
 
-Escolha e configure WhatsApp quando o assistente oferecer essa plataforma. Depois, teste o gateway em primeiro plano e, quando a configuração estiver correta, inicie-o como serviço:
+`hermes -p sand gateway setup`
+
+Escolha e configure WhatsApp quando o assistente oferecer essa plataforma. Depois, teste o gateway em primeiro plano:
+
+`hermes -p sand gateway`
+
+Quando a configuração estiver correta, inicie-o como serviço:
 
 ```sh
-hermes -p sand gateway setup
-hermes -p sand gateway
 hermes -p sand gateway install
 hermes -p sand gateway start
 hermes -p sand gateway status
