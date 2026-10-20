@@ -4,7 +4,7 @@
 
 Projeto para consultar transcrições de vídeo com busca híbrida e responder pelo Hermes com trechos e fontes.
 
-A forma mais simples de implementar um sistema RAG no Hermes Agent para consulta de vários documentos (no caso descrição de vídeos), respondendo como persona virtual do autor do canal. Utiliza QMD (Query Markup Documents), um utilitário CLI e servidor MCP local que combina busca híbrida (BM25 + embeddings) em SQLite com reranking, permitindo ao Hermes recuperar trechos e timestamps exatos mantendo a persona do autor.
+A forma mais simples de implementar um sistema RAG no Hermes Agent para consulta de vários documentos (no caso descrição/transcrição de vídeos), respondendo como persona virtual do autor do canal. Utiliza QMD (Query Markup Documents), um utilitário CLI e servidor MCP local que combina busca híbrida (BM25 + embeddings) em SQLite com reranking, permitindo ao Hermes recuperar trechos e timestamps exatos mantendo a persona do autor.
 
 ## Autor e Data
 
