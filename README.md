@@ -5,6 +5,8 @@ Data de criação: 19/10/2026
 
 Descrição
 
+A forma mais simples de implementar um sistema RAG no Hermes Agent para consulta de vários documentos (no caso descrição de vídeos), respondendo como persona virtual do autor do canal.
+
 Projeto para consultar transcrições de vídeo com busca híbrida e responder pelo Hermes com trechos e fontes.
 
 Objetivo
