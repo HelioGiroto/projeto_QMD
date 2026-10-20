@@ -37,7 +37,7 @@ O que faz
 
 As transcrições sem timestamp são a fonte oficial de informações de todos os projetos e ficam em:
 
-/home/clone/transcricoes_md
+`/home/clone/transcricoes_md`
 
 Identificação das fontes
 
@@ -85,8 +85,10 @@ Pré-requisitos verificados
 
 Verificar tudo sem abrir o chat:
 
-`cd /home/clone/projeto_QMD`
-`./start.sh --check`
+```sh
+cd /home/clone/projeto_QMD
+./start.sh --check
+```
 
 Atualizar a coleção:
 
@@ -126,7 +128,7 @@ MVP funcional em modo lexical: transcrições -> QMD BM25 -> MCP sand-qmd -> Her
 
 ## Instalação em outra VPS
 
-A instalação precisa ser feita em uma VPS com acesso à internet, Node.js 22 ou superior, Python disponível pelo Hermes e espaço para o Hermes, QMD e seus modelos. As transcrições devem ser copiadas para /home/clone/transcricoes_md ou o caminho TRANSCRIPTS_DIR deve ser ajustado.
+A instalação precisa ser feita em uma VPS com acesso à internet, Node.js 22 ou superior, Python disponível pelo Hermes e espaço para o Hermes, QMD e seus modelos. As transcrições devem ser copiadas para `/home/clone/transcricoes_md` ou o caminho TRANSCRIPTS_DIR deve ser ajustado.
 
 1. Instale o Hermes Agent na VPS seguindo a documentação oficial.
 2. Copie esta pasta projeto_QMD e a pasta transcricoes_md para a VPS, preservando os arquivos Markdown.
@@ -154,8 +156,10 @@ Chamando pelo Hermes
 
 Depois da instalação, abra uma conversa interativa:
 
-`cd /home/clone/projeto_QMD`
-`./chat.sh`
+```sh
+cd /home/clone/projeto_QMD
+./chat.sh
+```
 
 ou:
 
@@ -171,17 +175,15 @@ No CLI, a palavra Sand é opcional; no gateway ela servirá como nome/chamamento
 
 Configure a plataforma no perfil sand:
 
-`hermes -p sand gateway setup`
+Escolha e configure WhatsApp quando o assistente oferecer essa plataforma. Depois, teste o gateway em primeiro plano e, quando a configuração estiver correta, inicie-o como serviço:
 
-Escolha e configure WhatsApp quando o assistente oferecer essa plataforma. Depois, teste o gateway em primeiro plano:
-
-`hermes -p sand gateway`
-
-Quando a configuração estiver correta, inicie-o como serviço:
-
-`hermes -p sand gateway install`
-`hermes -p sand gateway start`
-`hermes -p sand gateway status`
+```sh
+hermes -p sand gateway setup
+hermes -p sand gateway
+hermes -p sand gateway install
+hermes -p sand gateway start
+hermes -p sand gateway status
+```
 
 Os comandos exatos de pareamento, token ou sessão dependem do adaptador de WhatsApp escolhido pelo Hermes. Não copie tokens de outra instalação; configure as credenciais da nova VPS no perfil sand.
 
@@ -189,16 +191,18 @@ Uso no WhatsApp
 
 Com o gateway ativo, uma mensagem como esta será encaminhada ao perfil Sand:
 
-Sand, encontre nos vídeos o que você diz sobre demanda em negócios de AI.
+"Sand, encontre nos vídeos o que você diz sobre demanda em negócios de AI."
 
-O gateway entrega a mensagem ao Hermes, o Hermes chama o MCP sand-qmd, o QMD pesquisa /home/clone/transcricoes_md e Sand responde no mesmo chat.
+O gateway entrega a mensagem ao Hermes, o Hermes chama o MCP sand-qmd, o QMD pesquisa `/home/clone/transcricoes_md` e Sand responde no mesmo chat.
 
 ## Operação e atualização
 
 Depois de adicionar ou alterar transcrições:
 
-`cd /home/clone/projeto_QMD`
-`./ingest.sh`
+```sh
+cd /home/clone/projeto_QMD
+./ingest.sh
+```
 
 Para verificar o gateway:
 
@@ -226,7 +230,7 @@ Localização
 
 As instruções de identidade e estilo devem ficar principalmente no SOUL.md do perfil Sand:
 
-/home/clone/.hermes/profiles/sand/SOUL.md
+`/home/clone/.hermes/profiles/sand/SOUL.md`
 
 O arquivo SOUL.md dentro deste projeto é a referência versionável. O README documenta a organização, mas não é a fonte principal das instruções comportamentais executadas pelo Hermes.
 
@@ -236,7 +240,7 @@ Divisão recomendada
 - README.md do projeto: documentação humana da arquitetura e dos comandos.
 - AGENTS.md ou uma skill sand-voice: regras detalhadas de formato, modos Literal/Fiel/Estilo, validação de evidências e exemplos few-shot extensos.
 - QMD/MCP: recuperação do conteúdo das transcrições; não define personalidade nem estilo.
-- /home/clone/transcricoes_md: fonte dos fatos e falas do autor; não deve conter instruções de comportamento.
+- `/home/clone/transcricoes_md`: fonte dos fatos e falas do autor; não deve conter instruções de comportamento.
 
 As diretrizes fornecidas para o Sand incluem:
 
@@ -256,6 +260,6 @@ Uma versão curta dos exemplos pode ficar no SOUL.md. Exemplos longos devem fica
 
 Atenção sobre a identidade
 
-O exemplo de diretrizes menciona autor: “Hélio”. Antes de aplicar esse nome ao Sand, confirme que Hélio é o autor das transcrições em /home/clone/transcricoes_md. Se o corpus for de outro autor, os exemplos e o campo de identidade devem ser ajustados para não misturar pessoas ou estilos.
+O exemplo de diretrizes menciona autor: “Hélio”. Antes de aplicar esse nome ao Sand, confirme que Hélio é o autor das transcrições em `/home/clone/transcricoes_md`. Se o corpus for de outro autor, os exemplos e o campo de identidade devem ser ajustados para não misturar pessoas ou estilos.
 
 O frontmatter YAML pode ser mantido como metadado documental, mas o Hermes trata o conteúdo do SOUL.md como texto de identidade; ele não depende do YAML para ativar a persona.
