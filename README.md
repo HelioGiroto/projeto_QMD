@@ -24,7 +24,7 @@ O que faz
 - Deve informar quando não existe evidência suficiente.
 - Como as transcrições não possuem timestamps, as fontes devem indicar o arquivo Markdown, o vídeo e, quando necessário, o trecho ou número de linha.
 
-Tecnologias previstas
+## Tecnologias previstas
 
 - Hermes Agent: agente, persona, regras de resposta e interface.
 - QMD: busca BM25, busca semântica e reranking local.
@@ -33,7 +33,7 @@ Tecnologias previstas
 - Node.js 22 ou superior: execução do QMD.
 - Modelos locais do QMD: embeddings, expansão de consulta e reranking.
 
-Fonte de dados
+## Fonte de dados
 
 As transcrições sem timestamp são a fonte oficial de informações de todos os projetos e ficam em:
 
@@ -43,23 +43,23 @@ Identificação das fontes
 
 As respostas devem citar o nome do arquivo Markdown e o título/ID do vídeo. Como não há timestamps, o sistema não deve inventar minutos ou segundos. Se for necessário localizar um trecho, pode usar número de linha, hash do chunk ou uma citação literal.
 
-Fluxo previsto
+## Fluxo previsto
 
 transcrições Markdown -> QMD -> MCP -> Hermes -> resposta com citações
 
-Princípio de fidelidade
+## Princípio de fidelidade
 
 O QMD encontra evidências; ele não é responsável pela personalidade do autor. O Hermes deve responder somente com base nos trechos recuperados e preservar a proveniência dos vídeos.
 
-Status
+## Status
 
 Projeto principal do experimento. O MVP deve começar com transcrições sem timestamp, QMD, MCP e um perfil Hermes com regras de citação.
 
-Gateway
+## Gateway
 
 O nome a ser chamado no gateway, inclusive no WhatsApp, será Sand. O usuário poderá escrever, por exemplo: “Sand, o que o autor diz sobre disciplina?”. Sand responderá em primeira pessoa como autor virtual baseado nas transcrições, sem afirmar ser a pessoa real.
 
-Implementação atual
+## Implementação atual
 
 Arquivos principais:
 
@@ -81,7 +81,7 @@ Pré-requisitos verificados
 - Perfil Hermes sand criado.
 - Servidor MCP sand-qmd configurado e testado.
 
-Comandos
+## Comandos
 
 Verificar tudo sem abrir o chat:
 
@@ -108,23 +108,23 @@ ou:
 
 `hermes -p sand chat`
 
-MCP
+## MCP
 
 O perfil sand usa o servidor MCP local sand-qmd, que chama a busca BM25 do QMD e expõe as ferramentas search_transcripts, get_transcript e qmd_status. O servidor nativo qmd foi substituído nesta primeira implementação porque a busca híbrida tentou carregar modelos locais e foi encerrada por falta de memória no ambiente atual.
 
-Limitação atual de embeddings
+## Limitação atual de embeddings
 
 O índice tem 78 documentos, mas a geração do embeddinggemma-300M foi encerrada com código 137 por falta de memória disponível e ausência de swap. O sistema continua funcional usando busca lexical BM25 pelo MCP sand-qmd. A busca semântica e o reranking serão ativados quando houver memória suficiente ou quando o QMD rodar em uma máquina com mais recursos.
 
-Teste realizado
+## Teste realizado
 
 Foi executado um chat real com o perfil sand. Hermes chamou as ferramentas MCP de busca e recuperação, consultou vários arquivos de transcrição e produziu uma resposta em português em primeira pessoa com nomes de arquivos como fontes.
 
-Status
+## Status
 
 MVP funcional em modo lexical: transcrições -> QMD BM25 -> MCP sand-qmd -> Hermes/Sand. A etapa pendente é habilitar embeddings para recuperar paráfrases e usar reranking.
 
-Instalação em outra VPS
+## Instalação em outra VPS
 
 A instalação precisa ser feita em uma VPS com acesso à internet, Node.js 22 ou superior, Python disponível pelo Hermes e espaço para o Hermes, QMD e seus modelos. As transcrições devem ser copiadas para /home/clone/transcricoes_md ou o caminho TRANSCRIPTS_DIR deve ser ajustado.
 
@@ -167,7 +167,7 @@ Sand, o que você diz sobre disciplina?
 
 No CLI, a palavra Sand é opcional; no gateway ela servirá como nome/chamamento do bot.
 
-Executando pelo gateway
+## Executando pelo gateway
 
 Configure a plataforma no perfil sand:
 
@@ -193,7 +193,7 @@ Sand, encontre nos vídeos o que você diz sobre demanda em negócios de AI.
 
 O gateway entrega a mensagem ao Hermes, o Hermes chama o MCP sand-qmd, o QMD pesquisa /home/clone/transcricoes_md e Sand responde no mesmo chat.
 
-Operação e atualização
+## Operação e atualização
 
 Depois de adicionar ou alterar transcrições:
 
@@ -220,7 +220,7 @@ Não versionar nem copiar publicamente:
 
 Faça backup separado das credenciais e configure-as novamente na VPS destino.
 
-Diretrizes de persona e estilo do Sand
+## Diretrizes de persona e estilo do Sand
 
 Localização
 
@@ -250,7 +250,7 @@ As diretrizes fornecidas para o Sand incluem:
 - Priorizar simplicidade operacional em vez de novidades da moda.
 - Apontar abertamente quando uma tecnologia parecer complexa demais para o problema.
 
-Few-shot
+## Few-shot
 
 Uma versão curta dos exemplos pode ficar no SOUL.md. Exemplos longos devem ficar em uma skill ou em referências carregadas sob demanda, para não aumentar o prompt de todas as conversas.
 
